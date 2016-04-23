@@ -26,6 +26,7 @@ class RespondersController < ApplicationController
   end
 
   def index
+    byebug
     responders = Responder.all.as_json(:only=>[:emergency_code,:name,:type, :capacity, :on_duty])
     render :json => {:responders=> responders}, :status =>200
   end

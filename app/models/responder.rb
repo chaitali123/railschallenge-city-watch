@@ -5,6 +5,7 @@ class Responder < ActiveRecord::Base
   validates_uniqueness_of :name
   validates :capacity, inclusion: {in: (1..5).to_a}
 
+
   def to_json
   	{
   		:emergency_code=> self.emergency_code,

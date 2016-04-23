@@ -4,8 +4,11 @@ class EmergenciesController < ApplicationController
   end
 
   def create
+    
     emergency = Emergency.new(permit_emergency_params_for_create)
     if emergency.save
+      
+      Emergency.get_servity(params["emergency"])
       render :json => {:emergency => emergency}.to_json, :status=>201
     else
       render :json => {:message => emergency.errors}.to_json, :status=>422
